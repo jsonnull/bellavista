@@ -1,0 +1,18 @@
+{
+  "name": "bellavista",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jsonnull/bellavista",
+  "authors": [
+    "Jason Nall <jsonnull@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}

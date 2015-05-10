@@ -1,0 +1,43 @@
+{
+  "name": "bellavista",
+  "version": "0.0.1",
+  "description": "A light, minimalist, DRY, isomorphic toolkit for HTML+JS applications",
+  "keywords": [
+    "DRY",
+    "minimal",
+    "lightweight",
+    "isomorphic",
+    "routing"
+  ],
+  "homepage": "https://github.com/jsonnull/bellavista",
+  "bugs": {
+    "url": "https://github.com/jsonnull/bellavista/issues",
+    "email": "jsonnull@gmail.com"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Jason Nall",
+    "email": "jsonnull@gmail.com"
+  },
+  "main": "dist/bellavista.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsonnull/bellavista.git"
+  },
+  "maintainers": [
+    {
+      "name": "jsonnull",
+      "email": "jsonnull@gmail.com"
+    }
+  ],
+  "devDependencies": {
+    "babelify": "^6.0.1",
+    "browserify": "^9.0.3",
+    "gulp": "^3.8.11",
+    "gulp-sourcemaps": "^1.5.1",
+    "gulp-util": "^3.0.4",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^2.6.0"
+  }
+}
