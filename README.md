@@ -2,7 +2,7 @@
 
 Bellavista is a small isomorphic toolkit for writing HTML+JS applications. It can be used in place of client-side MVC frameworks, on a Node.js server with express or connect, or with both in one codebase.
 
-**Bellavista is very early in development and currently unusable. API documentation and basic functionality is the first priority and will be done soon.**
+**Bellavista is very early in development and currently unusable. API documentation and basic functionality is the first priority and will be done soon. For projects requiring a stable API, you may consider [Sweetroll](http://www.github.com/jsonnull/sweetroll), the tiny, experimental predecessor to Bellavista.**
 
 ``` js
 // A simple Bellavista client program
@@ -18,8 +18,6 @@ app.at("/")
 
 app();
 ```
-
-**Bellavista is currently in early development. For projects requiring a stable API, you may consider [Sweetroll](http://www.github.com/jsonnull/sweetroll), a tiny, experimental predecessor to Bellavista.**
 
 ## Why Bellavista?
 
