@@ -6,8 +6,8 @@
  * A provider is an object with a get method
  */
 export class Provider {
-    constructor(store, name, func, deps) {
-        store.set(name, func);
+    constructor(store, name, obj, deps) {
+        store.set(name, obj);
     }
 }
 
@@ -20,7 +20,7 @@ export class Factory extends Provider {
             get: function() {
                 deps.forEach( (name, index) => { deps[index] = depStore.get(name); });
                 
-                return cons(...deps);
+                return new cons(...deps);
             }
         }, deps);
     }
