@@ -17,9 +17,9 @@ app.controller("appController", [], function() {
 app.route("/", ["appController"], function(appController) {
     appController.showTitle("Hello world!");
 });
+```
 
 For a full example, see [here](https://github.com/jsonnull/bellavista/blob/master/examples/example.js).
-```
 
 ## Why Bellavista?
 
