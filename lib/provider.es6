@@ -15,14 +15,14 @@ export class Provider {
  * A factory is a provider with a get method that returns the object
  */
 export class Factory extends Provider {
-    constructor(store, name, cons, deps) {
+    constructor(store, name, cons, deps, depStore = store) {
         super(store, name, {
             get: function() {
-                deps.forEach( (name, index) => { deps[index] = store.get(name); });
+                deps.forEach( (name, index) => { deps[index] = depStore.get(name); });
                 
                 return cons(...deps);
             }
-        }, deps)
+        }, deps);
     }
 }
 

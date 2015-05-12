@@ -35,7 +35,7 @@ class Bellavista {
     }
     
     route(name, deps, func) {
-        new Factory(this.routes, name, func, deps);
+        new Factory(this.routes, name, func, deps, this.components);
     }
 }
 
