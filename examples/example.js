@@ -8,25 +8,25 @@ app.data("remoteService", [], function() {
 });
 
 // Factory
-app.model("folderModel", ["remoteService"], function(remoteService) {
+app.model("titleModel", ["remoteService"], function(remoteService) {
     this.text = remoteService.getData();
 });
 
 // Factory
-app.view("folderView", ["folderModel"], function(folderModel) {
+app.view("titleView", ["titleModel"], function(titleModel) {
     this.render = function() {
-        return folderModel.text + " world";
+        return titleModel.text + " world";
     }
 });
 
 // Service
 app.controller("appController", [], function() {
-    this.showFolder = function(folder) {
-        $("#folder").html(folder);
+    this.showTitle = function(title) {
+        $("#title").html(title);
     }
 });
 
 // Factory
-app.route("/", ["appController", "folderView"], function(appController, folderView) {
-    appController.showFolder(folderView.render());
+app.route("/", ["appController", "titleView"], function(appController, titleView) {
+    appController.showTitle(titleView.render());
 });
