@@ -1,5 +1,5 @@
 export class Data {
-    constructor(name, cons) {
+    constructor(store, name, cons, deps) {
         
     }
 }

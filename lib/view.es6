@@ -1,5 +1,5 @@
 export class View {
-    constructor(name, cons) {
+    constructor(store, name, cons, deps) {
         
     }
 }

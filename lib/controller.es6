@@ -1,5 +1,5 @@
 export class Controller {
-    constructor(name, cons) {
+    constructor(store, name, cons, deps) {
         
     }
 }

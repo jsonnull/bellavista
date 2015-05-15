@@ -1,5 +1,5 @@
 export class Router {
-    constructor(name, cons) {
+    constructor(store, name, cons, deps) {
         
     }
 }

@@ -1,5 +1,5 @@
 export class Model {
-    constructor(name, cons) {
+    constructor(store, name, cons, deps) {
         
     }
 }
