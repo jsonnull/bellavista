@@ -31,13 +31,13 @@
     }
   ],
   "devDependencies": {
-    "babelify": "^6.0.1",
-    "browserify": "^9.0.3",
+    "babelify": "^6.1.1",
+    "browserify": "^10.2.0",
     "gulp": "^3.8.11",
     "gulp-sourcemaps": "^1.5.1",
     "gulp-util": "^3.0.4",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^2.6.0"
+    "watchify": "^3.2.1"
   }
 }

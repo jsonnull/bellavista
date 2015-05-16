@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var gutil = require('gulp-util'); 
+var gutil = require('gulp-util');
 var sourcemaps = require('gulp-sourcemaps');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
@@ -7,25 +7,39 @@ var watchify = require('watchify');
 var browserify = require('browserify');
 var babelify = require('babelify');
 
-var bundler = watchify(browserify(watchify.args).transform(babelify));
+gulp.task('build', function() {
+    var bundle = browserify({ cache: {}, packageCache: {}, debug: true });
 
-gulp.task('build', build);
+    bundle.add('./lib/bellavista.es6');
 
-gulp.task('watch', function() {
-    bundler.add('./lib/bellavista.es6');
-    bundler.on('update', build);
-    bundler.on('log', gutil.log);
-    build();
+    build(bundle);
 });
 
-function build() {
-    bundler.bundle()
-        .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+gulp.task('watch', function() {
+    var bundle = browserify({ cache: {}, packageCache: {}, debug: true });
+    bundle = watchify(bundle);
+
+    bundle.add('./lib/bellavista.es6');
+
+    bundle.on('log', console.log);
+
+    bundle.on('update', function() {
+        build(bundle);
+    });
+
+    build(bundle);
+});
+
+function build(bundle) {
+    bundle
+        .transform(babelify)
+        .bundle()
+        .on('error', function (err) { console.log("Error: " + err.message); })
         .pipe(source('bellavista.js'))
         // Sourcemaps
         .pipe(buffer())
-        .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(sourcemaps.write('./'))
+            .pipe(sourcemaps.init({loadMaps: true}))
+            .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./dist'));
 }
 
