@@ -34,6 +34,7 @@
     "babelify": "^6.1.1",
     "browserify": "^10.2.0",
     "gulp": "^3.8.11",
+    "gulp-jasmine": "^2.0.1",
     "gulp-sourcemaps": "^1.5.1",
     "gulp-util": "^3.0.4",
     "vinyl-buffer": "^1.0.0",

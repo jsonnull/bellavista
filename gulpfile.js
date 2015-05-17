@@ -11,6 +11,7 @@ gulp.task('build', function() {
     var bundle = browserify({ cache: {}, packageCache: {}, debug: true });
 
     bundle.add('./lib/bellavista.es6');
+    bundle.on('error', console.log);
 
     build(bundle);
 });
@@ -22,6 +23,7 @@ gulp.task('watch', function() {
     bundle.add('./lib/bellavista.es6');
 
     bundle.on('log', console.log);
+    bundle.on('error', console.log);
 
     bundle.on('update', function() {
         build(bundle);
@@ -34,7 +36,6 @@ function build(bundle) {
     bundle
         .transform(babelify)
         .bundle()
-        .on('error', function (err) { console.log("Error: " + err.message); })
         .pipe(source('bellavista.js'))
         // Sourcemaps
         .pipe(buffer())
