@@ -5,6 +5,7 @@ import {Model} from './model.es6';
 import {View} from './view.es6';
 import {Controller} from './controller.es6';
 import {Router} from './router.es6';
+import {Util} from './util.es6';
 
 class Bellavista {
 
@@ -12,30 +13,31 @@ class Bellavista {
         this.components = new Store();
         this.routes = new Store();
     }
-    
+
     // This function determines whether a given request matches a route
     static match(route, req) {
         return (req.url == route);
     }
 
     data(name, deps, func) {
-        new Service(this.components, name, func, deps);
+        new Service(this.components, name, func, { deps: deps });
     }
-    
+
     model(name, deps, func) {
-        new Factory(this.components, name, func, deps);
+        new Factory(this.components, name, func, { deps: deps });
     }
-    
+
     view(name, deps, func) {
-        new Factory(this.components, name, func, deps);
+        new Factory(this.components, name, func, { deps: deps });
     }
-    
+
     controller(name, deps, func) {
-        new Service(this.components, name, func, deps);
+        new Service(this.components, name, func, { deps: deps });
     }
-    
+
     route(name, deps, func) {
-        new Factory(this.routes, name, func, deps, this.components);
+        new Factory(this.routes, name, func,
+            { deps: deps, dependencyStore: this.components});
     }
 }
 
