@@ -19,6 +19,16 @@ class Bellavista {
         return (req.url == route);
     }
 
+    provider(name, deps, obj) {
+
+        if (obj == undefined) {
+            obj = deps;
+            deps = [];
+        }
+
+        new Provider(this.components, name, obj, {deps: deps});
+    }
+
     data(name, deps, func) {
         new Service(this.components, name, func, { deps: deps });
     }

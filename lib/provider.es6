@@ -19,6 +19,7 @@ export class Provider {
 
         store.set(name, obj);
     }
+
 }
 
 /*
@@ -35,9 +36,7 @@ export class Factory extends Provider {
         obj.get = function() {
 
             // Inject dependencies on every new factory object
-            deps.forEach( (name, index) => {
-                deps[index] = dependencyStore.get(name);
-            });
+            let deps = store.injectDependencies(name);
 
             // Call the constructor and return the new object
             return new cons(...deps);
