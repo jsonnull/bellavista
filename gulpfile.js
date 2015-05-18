@@ -9,16 +9,16 @@ var babelify = require('babelify');
 var jasmine = require('gulp-jasmine');
 
 gulp.task('build', function() {
-    var bundle = browserify({ cache: {}, packageCache: {}, debug: true });
+    var bundle = browserify({ standalone: "bellavista", cache: {}, packageCache: {}, debug: true });
 
     bundle.add('./lib/bellavista.es6');
     bundle.on('error', console.log);
 
-    build(bundle);
+    return build(bundle);
 });
 
 gulp.task('watch', function() {
-    var bundle = browserify({ cache: {}, packageCache: {}, debug: true });
+    var bundle = browserify({ standalone: "bellavista", cache: {}, packageCache: {}, debug: true });
     bundle = watchify(bundle);
 
     bundle.add('./lib/bellavista.es6');
@@ -33,13 +33,13 @@ gulp.task('watch', function() {
     build(bundle);
 });
 
-gulp.task('test', function() {
+gulp.task('test', ['build'], function() {
     return gulp.src('spec/**/*[sS]pec.js')
         .pipe(jasmine());
 });
 
 function build(bundle) {
-    bundle
+    var b = bundle
         .transform(babelify)
         .bundle()
         .pipe(source('bellavista.js'))
@@ -48,6 +48,7 @@ function build(bundle) {
             .pipe(sourcemaps.init({loadMaps: true}))
             .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./dist'));
+    return b;
 }
 
-gulp.task('default', ['build', 'test']);
+gulp.task('default', ['test']);
