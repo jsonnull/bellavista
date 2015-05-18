@@ -6,6 +6,7 @@ var buffer = require('vinyl-buffer');
 var watchify = require('watchify');
 var browserify = require('browserify');
 var babelify = require('babelify');
+var jasmine = require('gulp-jasmine');
 
 gulp.task('build', function() {
     var bundle = browserify({ cache: {}, packageCache: {}, debug: true });
@@ -30,6 +31,11 @@ gulp.task('watch', function() {
     });
 
     build(bundle);
+});
+
+gulp.task('test', function() {
+    return gulp.src('spec/**/*[sS]pec.js')
+        .pipe(jasmine());
 });
 
 function build(bundle) {

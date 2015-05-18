@@ -30,6 +30,9 @@
       "email": "jsonnull@gmail.com"
     }
   ],
+  "scripts": {
+      "test": "gulp test"
+  },
   "devDependencies": {
     "babelify": "^6.1.1",
     "browserify": "^10.2.0",
