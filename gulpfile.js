@@ -50,4 +50,4 @@ function build(bundle) {
         .pipe(gulp.dest('./dist'));
 }
 
-gulp.task('default', ['build']);
+gulp.task('default', ['build', 'test']);
