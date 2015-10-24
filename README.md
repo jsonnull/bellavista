@@ -1,4 +1,5 @@
-# Bellavista [![Build Status](https://travis-ci.org/jsonnull/bellavista.svg?branch=master)](https://travis-ci.org/jsonnull/bellavista)
+# Bellavista
+[![Build Status](https://travis-ci.org/jsonnull/bellavista.svg?branch=master)](https://travis-ci.org/jsonnull/bellavista) [![Coverage Status](https://coveralls.io/repos/jsonnull/bellavista/badge.svg?branch=master&service=github)](https://coveralls.io/github/jsonnull/bellavista?branch=master)
 
 **Bellavista is a small isomorphic framework for writing modular, expressive JavaScript applications.** It may be used in the browser, on the server, standalone, alongside another MVC framework, and with connect or express.
 
