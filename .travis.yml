@@ -6,6 +6,6 @@ node_js:
   - "iojs"
   - "iojs-v1.0.4"
 before_script:
-  - npm install -g gulp
+  - npm install -g istanbul jasmine
 script:
-  - gulp
+  - npm test
