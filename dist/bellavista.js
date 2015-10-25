@@ -5,8 +5,11 @@
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
+// istanbul ignore next
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+// istanbul ignore next
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -34,7 +37,20 @@ var Bellavista = (function () {
         this.routes = new _storeEs6.Store();
     }
 
+    // This function determines whether a given request matches a route
+
     _createClass(Bellavista, [{
+        key: 'provider',
+        value: function provider(name, deps, obj) {
+
+            if (obj == undefined) {
+                obj = deps;
+                deps = [];
+            }
+
+            new _providerEs6.Provider(this.components, name, obj, { deps: deps });
+        }
+    }, {
         key: 'data',
         value: function data(name, deps, func) {
             new _providerEs6.Service(this.components, name, func, { deps: deps });
@@ -61,8 +77,6 @@ var Bellavista = (function () {
         }
     }], [{
         key: 'match',
-
-        // This function determines whether a given request matches a route
         value: function match(route, req) {
             return req.url == route;
         }
@@ -79,12 +93,14 @@ exports['default'] = global.bellavista = bellavista;
 module.exports = exports['default'];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
 },{"./controller.es6":2,"./data.es6":3,"./model.es6":4,"./provider.es6":5,"./router.es6":6,"./store.es6":7,"./util.es6":8,"./view.es6":9}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+// istanbul ignore next
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -100,6 +116,7 @@ exports.Controller = Controller;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+// istanbul ignore next
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -115,6 +132,7 @@ exports.Data = Data;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+// istanbul ignore next
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -130,13 +148,21 @@ exports.Model = Model;
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
+// istanbul ignore next
 var _bind = Function.prototype.bind;
+// istanbul ignore next
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+// istanbul ignore next
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+// istanbul ignore next
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// istanbul ignore next
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -165,15 +191,18 @@ var Provider = function Provider(store, name, obj, opts) {
     this.layer = layer;
 
     store.set(name, obj);
-};
-
-exports.Provider = Provider;
+}
 
 /*
  * A factory is a provider with a get method that returns the object
  */
+;
+
+exports.Provider = Provider;
 
 var Factory = (function (_Provider) {
+    _inherits(Factory, _Provider);
+
     function Factory(store, name, cons, opts) {
         _classCallCheck(this, Factory);
 
@@ -188,9 +217,7 @@ var Factory = (function (_Provider) {
         obj.get = function () {
 
             // Inject dependencies on every new factory object
-            deps.forEach(function (name, index) {
-                deps[index] = dependencyStore.get(name);
-            });
+            var deps = store.injectDependencies(name);
 
             // Call the constructor and return the new object
             return new (_bind.apply(cons, [null].concat(_toConsumableArray(deps))))();
@@ -200,18 +227,17 @@ var Factory = (function (_Provider) {
         _get(Object.getPrototypeOf(Factory.prototype), 'constructor', this).call(this, store, name, obj, opts);
     }
 
-    _inherits(Factory, _Provider);
-
+    /*
+     * Service is a factory that acquires the constructed singleton upon creation
+     */
     return Factory;
 })(Provider);
 
 exports.Factory = Factory;
 
-/*
- * Service is a factory that acquires the constructed singleton upon creation
- */
-
 var Service = (function (_Factory) {
+    _inherits(Service, _Factory);
+
     function Service(store, name, cons, opts) {
         _classCallCheck(this, Service);
 
@@ -237,8 +263,6 @@ var Service = (function (_Factory) {
         _get(Object.getPrototypeOf(Service.prototype), 'constructor', this).call(this, store, name, cons, opts);
     }
 
-    _inherits(Service, _Factory);
-
     return Service;
 })(Factory);
 
@@ -250,6 +274,7 @@ exports.Service = Service;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+// istanbul ignore next
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -265,8 +290,11 @@ exports.Router = Router;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+// istanbul ignore next
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+// istanbul ignore next
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -281,21 +309,43 @@ var Store = (function () {
         this.dict = {};
     }
 
+    // Instantiate each and store
+
     _createClass(Store, [{
         key: "set",
-
-        // Instantiate each and store
         value: function set(name, obj) {
             this.dict[name] = obj;
         }
-    }, {
-        key: "get",
 
         // Return the provider from the store
+    }, {
+        key: "get",
         value: function get(name) {
             if (this.dict[name] !== undefined) {
                 return this.dict[name].get();
             }
+        }
+
+        // Get a provider from the store without calling its get method
+    }, {
+        key: "retrieve",
+        value: function retrieve(name) {
+            return this.dict[name];
+        }
+
+        // Return array of instantiated dependencies for a given provider
+    }, {
+        key: "injectDependencies",
+        value: function injectDependencies(name) {
+            var provider = this.retrieve(name);
+
+            var deps = [];
+
+            provider.deps.forEach(function (name, index) {
+                deps[index] = provider.dependencyStore.get(name);
+            });
+
+            return deps;
         }
     }]);
 
@@ -310,8 +360,11 @@ exports.Store = Store;
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
+// istanbul ignore next
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+// istanbul ignore next
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -338,6 +391,7 @@ exports.Util = Util;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+// istanbul ignore next
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -349,4 +403,6 @@ exports.View = View;
 
 },{}]},{},[1])(1)
 });
+
+
 //# sourceMappingURL=bellavista.js.map
