@@ -1,6 +1,7 @@
 require('babel/register');
+var bellavista = require("../lib/bellavista.js");
+
 describe("Bellavista", function() {
-    var bellavista = require("../lib/bellavista.es6");
     var app;
 
     beforeEach(function() {
