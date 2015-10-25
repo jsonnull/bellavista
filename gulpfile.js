@@ -34,7 +34,9 @@ gulp.task('watch', function() {
 
 function build(bundle) {
     var b = bundle
-        .transform(babelify)
+        .transform(babelify.configure({
+            auxiliaryCommentBefore: "istanbul ignore next"
+        }))
         .bundle()
         .pipe(source('bellavista.js'))
         // Sourcemaps
