@@ -31,12 +31,13 @@
     }
   ],
   "scripts": {
-    "test": "gulp build && istanbul cover jasmine && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "test": "istanbul cover jasmine && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "dependencies": {
-    "coveralls": "^2.11.4",
+    "babel": "^5.8.29",
     "babelify": "^6.1.1",
     "browserify": "^10.2.0",
+    "coveralls": "^2.11.4",
     "gulp": "^3.8.11",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-util": "^3.0.4",
