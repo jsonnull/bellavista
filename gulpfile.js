@@ -10,7 +10,7 @@ var babelify = require('babelify');
 gulp.task('build', function() {
     var bundle = browserify({ standalone: "bellavista", cache: {}, packageCache: {}, debug: true });
 
-    bundle.add('./lib/bellavista.js');
+    bundle.add('./lib/bellavista.es6');
     bundle.on('error', console.log);
 
     return build(bundle);
@@ -20,7 +20,7 @@ gulp.task('watch', function() {
     var bundle = browserify({ standalone: "bellavista", cache: {}, packageCache: {}, debug: true });
     bundle = watchify(bundle);
 
-    bundle.add('./lib/bellavista.js');
+    bundle.add('./lib/bellavista.es6');
 
     bundle.on('log', console.log);
     bundle.on('error', console.log);
