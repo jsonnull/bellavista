@@ -1,11 +1,11 @@
-import {Store} from './store.es6';
-import {Provider,Factory,Service} from './provider.es6';
-import {Data} from './data.es6';
-import {Model} from './model.es6';
-import {View} from './view.es6';
-import {Controller} from './controller.es6';
-import {Router} from './router.es6';
-import {Util} from './util.es6';
+import {Store} from './store';
+import {Provider,Factory,Service} from './provider';
+import {Data} from './data';
+import {Model} from './model';
+import {View} from './view';
+import {Controller} from './controller';
+import {Router} from './router';
+import {Util} from './util';
 
 class Bellavista {
 
@@ -55,4 +55,4 @@ function bellavista() {
     return new Bellavista;
 }
 
-export default global.bellavista = bellavista;
+module.exports = bellavista;

@@ -1,4 +1,4 @@
-import {Util} from './util.es6';
+import {Util} from './util';
 
 /*
  * Bellavista providers are healivy inspired by the providers in Angular

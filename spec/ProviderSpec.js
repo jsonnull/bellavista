@@ -1,4 +1,4 @@
-require('babel/register');
+require('babel-register');
 describe("Providers", function() {
     var bellavista = require("../dist/bellavista.js");
     var app;
