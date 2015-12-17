@@ -1,5 +1,3 @@
 export class Model {
-    constructor(store, name, cons, deps) {
-        
-    }
+  constructor (store, name, cons, deps) {}
 }

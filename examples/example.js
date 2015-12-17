@@ -1,32 +1,34 @@
-var app = bellavista();
+/* global $ bellavista */
+
+var app = bellavista()
 
 // Service
-app.data("remoteService", [], function() {
-    this.getData = function() {
-        return "Hello";
-    }
-});
+app.data('remoteService', [], function () {
+  this.getData = function () {
+    return 'Hello'
+  }
+})
 
 // Factory
-app.model("titleModel", ["remoteService"], function(remoteService) {
-    this.text = remoteService.getData();
-});
+app.model('titleModel', ['remoteService'], function (remoteService) {
+  this.text = remoteService.getData()
+})
 
 // Factory
-app.view("titleView", ["titleModel"], function(titleModel) {
-    this.render = function() {
-        return titleModel.text + " world";
-    }
-});
+app.view('titleView', ['titleModel'], function (titleModel) {
+  this.render = function () {
+    return titleModel.text + ' world'
+  }
+})
 
 // Service
-app.controller("appController", [], function() {
-    this.showTitle = function(title) {
-        $("#title").html(title);
-    }
-});
+app.controller('appController', [], function () {
+  this.showTitle = function (title) {
+    $('#title').html(title)
+  }
+})
 
 // Factory
-app.route("/", ["appController", "titleView"], function(appController, titleView) {
-    appController.showTitle(titleView.render());
-});
+app.route('/', ['appController', 'titleView'], function (appController, titleView) {
+  appController.showTitle(titleView.render())
+})
